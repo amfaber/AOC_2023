@@ -1,6 +1,4 @@
 use shared::{get_day_input, lazy_input, Lazy};
-
-
 lazy_input!{1}
 
 fn part1(){
@@ -13,32 +11,36 @@ fn part1(){
     dbg!(total);
 }
 
-fn identify_number(s: &str, ) -> Option<usize>{
-    if s.starts_with("one") || s.starts_with("1"){
+fn starts_with_alias(s: &str, pats: &[&str]) -> bool{
+    pats.iter().fold(false, |acc, pat| acc || s.starts_with(pat))
+}
+
+fn identify_number(s: &str) -> Option<usize>{
+    if starts_with_alias(s, &["one", "1"]){
         return Some(1)
     }
-    if s.starts_with("two") || s.starts_with("2"){
+    if starts_with_alias(s, &["two", "2"]){
         return Some(2)
     }
-    if s.starts_with("three") || s.starts_with("3"){
+    if starts_with_alias(s, &["three", "3"]){
         return Some(3)
     }
-    if s.starts_with("four") || s.starts_with("4"){
+    if starts_with_alias(s, &["four", "4"]){
         return Some(4)
     }
-    if s.starts_with("five") || s.starts_with("5"){
+    if starts_with_alias(s, &["five", "5"]){
         return Some(5)
     }
-    if s.starts_with("six") || s.starts_with("6"){
+    if starts_with_alias(s, &["six", "6"]){
         return Some(6)
     }
-    if s.starts_with("seven") || s.starts_with("7"){
+    if starts_with_alias(s, &["seven", "7"]){
         return Some(7)
     }
-    if s.starts_with("eight") || s.starts_with("8"){
+    if starts_with_alias(s, &["eight", "8"]){
         return Some(8)
     }
-    if s.starts_with("nine") || s.starts_with("9"){
+    if starts_with_alias(s, &["nine", "9"]){
         return Some(9)
     }
     None
